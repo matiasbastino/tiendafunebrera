@@ -1,0 +1,15 @@
+.productos, .carrito {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+#lista-productos .item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+}
+
+#items-carrito div {
+  margin-bottom: 0.5rem;
+}

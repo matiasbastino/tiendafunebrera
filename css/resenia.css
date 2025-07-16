@@ -1,0 +1,74 @@
+/* Contenedor principal */
+.resenia {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem 1rem;
+  background-color: var(--gris-claro);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  /* Quitar text-align center para que no afecte al contenido interno */
+  text-align: unset;
+}
+
+/* Título */
+.resenia h1 {
+  font-size: 2.5rem;
+  color: var(--rojo);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center; /* título centrado */
+}
+
+/* Contenedor de tarjetas */
+#contenido {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Tarjeta individual */
+.reseña-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin: 1rem auto;
+
+  /* Hacemos flex para poner imagen y texto lado a lado */
+  display: flex;
+  align-items: center;
+}
+
+/* Foto reseña */
+.foto-resenia {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0; /* evita que se achique */
+}
+
+/* Contenedor del texto */
+.texto-resenia {
+  margin-left: 1.2rem; /* separa del borde de la foto */
+  text-align: left; /* alineado a la izquierda */
+  flex-grow: 1; /* que tome el espacio restante */
+}
+
+/* Cada párrafo en la tarjeta (nombre, mail, edad) */
+.texto-resenia p {
+  margin: 0.3rem 0;
+  color: var(--texto-principal);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.boton-contenedor {
+  text-align: center;
+  margin-top: 1rem; /* espacio arriba para separar del contenido */
+}
