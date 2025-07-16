@@ -1,0 +1,112 @@
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.productos {
+  margin-bottom: 3rem;
+}
+.productos h2 {
+  color: #d4161b;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+#lista-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.item {
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.item:hover {
+  box-shadow: 0 0 12px #d4161b;
+}
+.item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.8rem;
+  border-radius: 6px;
+}
+.item h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #222;
+}
+.item p {
+  margin-bottom: 1rem;
+  color: #555;
+  font-weight: 600;
+}
+.item button {
+  background-color: #d4161b;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.item button:hover {
+  background-color: #a30f12;
+}
+
+/* Carrito */
+.carrito {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
+  max-width: 500px;
+  margin: 0 auto 3rem auto;
+}
+.carrito h2 {
+  text-align: center;
+  color: #d4161b;
+  margin-bottom: 1rem;
+}
+#items-carrito div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #ccc;
+  font-weight: 600;
+  color: #333;
+}
+#items-carrito div button {
+  background: transparent;
+  border: none;
+  color: #d4161b;
+  font-weight: 700;
+  cursor: pointer;
+}
+#total-carrito {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #222;
+  display: block;
+  text-align: right;
+  margin-top: 0.8rem;
+}
+#vaciar-carrito, #ir-a-pagar{
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+#vaciar-carrito:hover, #ir-a-pagar:hover {
+  background-color: #d4161b;
+}
