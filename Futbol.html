@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Productos - Tienda Funebrera</title>
+    <script
+      src="https://kit.fontawesome.com/0191feab37.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/futbol.css" />
+  </head>
+  <body>
+    <header>
+      <!-- Franja de promoción -->
+      <div class="promo-bar">
+        <p>¡Envío en el día a CABA y GBA! | Comprando antes de las 13 hs</p>
+      </div>
+
+      <!-- Barra principal: logo, texto y acceso -->
+      <div class="header-main">
+        <div class="header-left">
+          <a href="index.html" class="logo-link">
+            <img
+              src="./Imagenes/logo.png"
+              alt="Escudo Chacarita Juniors"
+              class="logo"
+            />
+            <h1 class="titulo">Tienda Funebrera</h1>
+          </a>
+        </div>
+        <div class="header-right">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+
+      <!-- Menú de navegación -->
+      <nav class="nav-bar">
+        <a href="Futbol.html" class="li-list">Nuestros productos</a>
+        <a href="Nosotros.html" class="li-list">Nosotros</a>
+        <a href="Contacto.html" class="li-list">Contacto</a>
+        <a href="Ubicacion.html" class="li-list">Ubicación</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="productos">
+        <h2>Nuestros Productos</h2>
+        <div id="lista-productos"></div>
+      </section>
+
+      <section class="carrito">
+        <h2>Tu Carrito</h2>
+        <div id="items-carrito"></div>
+        <p>Total: $<span id="total-carrito">0</span></p>
+        <button id="vaciar-carrito">Vaciar Carrito</button>
+        <button id="ir-a-pagar">Ir a Pagar</button>
+      </section>
+    </main>
+    <script>
+      const productos = [
+        {
+          id: 1,
+          nombre: "Camiseta Oficial 2025",
+          precio: 70000,
+          imagen: "./Imagenes/Camiseta Chacarita.jpg",
+        },
+        {
+          id: 2,
+          nombre: "Bufanda Tricolor",
+          precio: 25000,
+          imagen: "./Imagenes/Bufanda Chacarita-01.jpg",
+        },
+        {
+          id: 3,
+          nombre: "Gorra Oficial",
+          precio: 14000,
+          imagen: "./Imagenes/Gorro Chacarita-01.png",
+        },
+        {
+          id: 4,
+          nombre: "Short Oficial",
+          precio: 30000,
+          imagen: "./Imagenes/short chacarita.jpg",
+        },
+        {
+          id: 5,
+          nombre: "Medias Tricolor",
+          precio: 6500,
+          imagen: "./Imagenes/medias chacarita-01.jpg",
+        },
+        {
+          id: 6,
+          nombre: "Rompeviento Club",
+          precio: 60000,
+          imagen: "./Imagenes/rompeviento.jpg",
+        },
+      ];
+
+      const listaProductos = document.getElementById("lista-productos");
+      const itemsCarrito = document.getElementById("items-carrito");
+      const totalCarrito = document.getElementById("total-carrito");
+      const vaciarCarritoBtn = document.getElementById("vaciar-carrito");
+
+      let carrito = [];
+
+      // ============================
+      // 1️⃣ Cargar carrito desde localStorage
+      // ============================
+      function cargarCarrito() {
+        const carritoGuardado = localStorage.getItem("carrito");
+        if (carritoGuardado) {
+          carrito = JSON.parse(carritoGuardado);
+        }
+      }
+
+      // ============================
+      // 2️⃣ Guardar carrito en localStorage
+      // ============================
+      function guardarCarrito() {
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+      }
+
+      // ============================
+      // Render productos
+      // ============================
+      function mostrarProductos() {
+        productos.forEach((prod) => {
+          const item = document.createElement("div");
+          item.classList.add("item");
+          item.innerHTML = `
+        <img src="${prod.imagen}" alt="${prod.nombre}">
+        <h4>${prod.nombre}</h4>
+        <p>$${prod.precio.toLocaleString("es-AR")}</p>
+        <button onclick="agregarAlCarrito(${
+          prod.id
+        })">Agregar al Carrito</button>
+      `;
+          listaProductos.appendChild(item);
+        });
+      }
+
+      // ============================
+      // Agregar producto al carrito
+      // ============================
+      function agregarAlCarrito(id) {
+        const prod = productos.find((p) => p.id === id);
+        carrito.push(prod);
+        actualizarCarrito();
+      }
+
+      // ============================
+      // Quitar producto por índice
+      // ============================
+      function quitarDelCarrito(index) {
+        carrito.splice(index, 1);
+        actualizarCarrito();
+      }
+
+      // ============================
+      // Actualizar vista y persistencia
+      // ============================
+      function actualizarCarrito() {
+        itemsCarrito.innerHTML = "";
+        carrito.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.innerHTML = `
+        ${item.nombre} - $${item.precio.toLocaleString("es-AR")}
+        <button onclick="quitarDelCarrito(${index})">&times;</button>
+      `;
+          itemsCarrito.appendChild(div);
+        });
+
+        const total = carrito.reduce((acc, item) => acc + item.precio, 0);
+        totalCarrito.textContent = total.toLocaleString("es-AR");
+
+        guardarCarrito();
+      }
+
+      // ============================
+      // Botón para vaciar carrito
+      // ============================
+      vaciarCarritoBtn.addEventListener("click", () => {
+        carrito = [];
+        actualizarCarrito();
+      });
+
+      // ============================
+      // Botón Ir a Pagar
+      // ============================
+
+      const irAPagarBtn = document.getElementById("ir-a-pagar");
+
+      irAPagarBtn.addEventListener("click", () => {
+        if (carrito.length === 0) {
+          alert("Tu carrito está vacío. Agrega productos para continuar.");
+          return;
+        }
+        guardarCarrito();
+        window.location.href = "compra.html";
+      });
+
+      // ============================
+      // Inicializar
+      // ============================
+      cargarCarrito();
+      mostrarProductos();
+      actualizarCarrito();
+    </script>
+
+    
+
+    <footer class="contenedor">
+      <div>
+        <p class="texto-footer">
+          Desarrollado por Matias Bastino en el marco del curso de Talent Tech
+        </p>
+      </div>
+      <div class="instagram">
+        <a
+          href="https://www.instagram.com/chacaoficial/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram de Matias Bastino"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </footer>
+
+  </body>
+</html>
