@@ -343,6 +343,17 @@ footer .instagram i {
   font-weight: 800;
 }
 
+@media (max-width: 600px) {
+  .proximamente {
+    padding: 0 1rem;
+    height: auto; /* Así no fuerza el alto en pantallas chicas */
+  }
+
+  .proximamente h1 {
+    font-size: 2.2rem; /* Tamaño más razonable en celular */
+  }
+}
+
 /* --- NOSOTROS --- */
 .nosotros-section p {
     margin-bottom: 1.2rem;
