@@ -81,35 +81,28 @@ header {
 
 .nav-bar {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
-  background-color: var(--negro);
+  gap: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 1rem;
 }
 
 .nav-bar a {
-  color: white;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 1rem;
   text-decoration: none;
-  padding: 1rem 1.5rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
 }
 
 .nav-bar a:hover {
   color: var(--rojo);
 }
 
-@media (max-width: 768px) {
-  nav ul {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-
-  nav ul li {
-    white-space: nowrap;
-    flex-shrink: 0;
+@media (max-width: 600px) {
+  .nav-bar a {
+    font-size: 0.9rem;
   }
 }
 
