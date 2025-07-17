@@ -97,6 +97,19 @@ header {
   color: var(--rojo);
 }
 
+@media (max-width: 600px) {
+  nav ul {
+    flex-wrap: nowrap;         /* 👉 evita que se rompa en dos líneas */
+    overflow-x: auto;          /* 👉 permite scroll horizontal si no entra */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav ul li {
+    white-space: nowrap;       /* 👉 evita que cada palabra haga salto de línea */
+    padding: 0 0.8rem;         /* 👉 reduce el espacio horizontal entre ítems */
+  }
+}
+
 /* =====================
    BANNER PRINCIPAL
    ===================== */
