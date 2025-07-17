@@ -81,21 +81,16 @@ header {
 
 .nav-bar {
   display: flex;
-  flex-wrap: nowrap;
   justify-content: center;
-  gap: 1rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 0.5rem 1rem;
-  background-color: black; /* restaurá el color original si era negro */
+  background-color: var(--negro);
 }
 
 .nav-bar a {
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-size: 0.95rem;
   color: white;
   text-decoration: none;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .nav-bar a:hover {
@@ -104,7 +99,7 @@ header {
 
 @media (max-width: 600px) {
   .nav-bar a {
-    font-size: 0.85rem; /* más pequeño para que no se corte */
+    font-size: 0.65rem; /* más pequeño para que no se corte */
   }
 }
 
